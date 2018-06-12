@@ -5,6 +5,7 @@ using System.Text;
 
 using System.Net;
 using System.Net.Sockets;
+using System.Threading;
 
 namespace tcpclient
 {
@@ -55,12 +56,14 @@ namespace tcpclient
             String StrServAddr;
             Console.WriteLine("Podaj Adres IPv4 servera: ");
             StrServAddr = Console.ReadLine();
-            Int IntSocket;
+            int IntSocket;
             Console.WriteLine("Podaj port: ");
             String StrSocket;
             StrSocket = Console.ReadLine();
             IntSocket = Convert.ToInt32(StrSocket);
-            client(StrServAddr, IntSocket);
+
+            Thread thr1=new Thread(client(StrServAddr, IntSocket));
+            
 
         }
 }
