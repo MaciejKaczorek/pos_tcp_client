@@ -9,15 +9,18 @@ using System.Threading.Tasks;
 namespace tcpclient
 {
     class ClTcpClient
-    {//string StrServAddr, int IntSocket
+    {
         public static void client()
-        {            
+        {
+            Console.Write("adres serwera: ");
+            string StrServAddr=Console.ReadLine();
+            Console.Write("nr portu: ");
+            int IntSocket = Convert.ToInt32(Console.ReadLine());
             try
             {
                 TcpClient tcpclnt = new TcpClient();
                 Console.WriteLine("Łączenie.....");
-
-                tcpclnt.Connect("192.168.200.107", 55555);
+                tcpclnt.Connect(StrServAddr, IntSocket);
 
                 Console.WriteLine("Połączono");
                 Console.WriteLine("wpisz:'exit' aby przerwać połączenie, wciśnij <enter> by wysłać losowy tekst.");
