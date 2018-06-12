@@ -10,19 +10,16 @@ namespace tcpclient
 {
     class Program
     {
-        static void Main(string[] args)
+
+
+        public static void client(string StrServAddr, int IntSocket)
         {
-            String StrServAddr;
-            Console.WriteLine("Podaj Adres IPv4 servera: ");
-            StrServAddr = Console.ReadLine();
             byte[] data = new byte[1024];
             string input, stringData;
             TcpClient server;
             try
             {
-                //server = new TcpClient("192.168.200.107", 55555);
-                //server = new TcpClient("192.168.200.107", 55555);
-                server = new TcpClient(StrServAddr, 55555);
+                server = new TcpClient(StrServAddr, IntSocket);
             }
             catch (SocketException)
             {
@@ -53,5 +50,18 @@ namespace tcpclient
             server.Close();
             Console.ReadKey();
         }
-    }
+        static void Main(string[] args)
+        {
+            String StrServAddr;
+            Console.WriteLine("Podaj Adres IPv4 servera: ");
+            StrServAddr = Console.ReadLine();
+            Int IntSocket;
+            Console.WriteLine("Podaj port: ");
+            String StrSocket;
+            StrSocket = Console.ReadLine();
+            IntSocket = Convert.ToInt32(StrSocket);
+            client(StrServAddr, IntSocket);
+
+        }
+}
 }

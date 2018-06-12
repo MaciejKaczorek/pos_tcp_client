@@ -5,3 +5,9 @@ C:\Users\Maciej Kaczorek\source\repos\tcpclient\tcpclient\obj\Debug\tcpclient.cs
 C:\Users\Maciej Kaczorek\source\repos\tcpclient\tcpclient\obj\Debug\tcpclient.csproj.CoreCompileInputs.cache
 C:\Users\Maciej Kaczorek\source\repos\tcpclient\tcpclient\obj\Debug\tcpclient.exe
 C:\Users\Maciej Kaczorek\source\repos\tcpclient\tcpclient\obj\Debug\tcpclient.pdb
+C:\Users\Maciej Kaczorek\Documents\GitHub\pos_tcp_client\tcpclient\bin\Debug\tcpclient.exe.config
+C:\Users\Maciej Kaczorek\Documents\GitHub\pos_tcp_client\tcpclient\obj\Debug\tcpclient.exe
+C:\Users\Maciej Kaczorek\Documents\GitHub\pos_tcp_client\tcpclient\obj\Debug\tcpclient.pdb
+C:\Users\Maciej Kaczorek\Documents\GitHub\pos_tcp_client\tcpclient\bin\Debug\tcpclient.exe
+C:\Users\Maciej Kaczorek\Documents\GitHub\pos_tcp_client\tcpclient\bin\Debug\tcpclient.pdb
+C:\Users\Maciej Kaczorek\Documents\GitHub\pos_tcp_client\tcpclient\obj\Debug\tcpclient.csprojResolveAssemblyReference.cache
