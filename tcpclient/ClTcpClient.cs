@@ -11,9 +11,7 @@ namespace tcpclient
     class ClTcpClient
     {//string StrServAddr, int IntSocket
         public static void client()
-        {
-
-
+        {            
             try
             {
                 TcpClient tcpclnt = new TcpClient();
@@ -22,14 +20,15 @@ namespace tcpclient
                 tcpclnt.Connect("192.168.200.107", 55555);
 
                 Console.WriteLine("Połączono");
-                Console.WriteLine("wpisz:'exit' aby przerwać połączenie, tekst by wysłać.");
+                Console.WriteLine("wpisz:'exit' aby przerwać połączenie, wciśnij <enter> by wysłać losowy tekst.");
                 while (true)
                 {
                     String str = Console.ReadLine();
                     if (str == "exit")
                     {
                         break;
-                    }
+                    }else
+                    str = ClRand.GenerateStr();
                     Stream stm = tcpclnt.GetStream();
 
                     ASCIIEncoding asen = new ASCIIEncoding();
