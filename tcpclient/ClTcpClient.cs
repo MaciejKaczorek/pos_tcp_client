@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
@@ -8,44 +9,48 @@ using System.Threading.Tasks;
 namespace tcpclient
 {
     class ClTcpClient
-    {
-        public static void client(string StrServAddr, int IntSocket)
+    {//string StrServAddr, int IntSocket
+        public static void client()
         {
-            byte[] data = new byte[1024];
-            string input, stringData;
-            TcpClient server;
+
+
             try
             {
-                server = new TcpClient(StrServAddr, IntSocket);
-            }
-            catch (SocketException)
-            {
-                Console.WriteLine("Unable to connect to server");
-                Console.ReadKey();
-                return;
-            }
-            NetworkStream ns = server.GetStream();
-            int recv = ns.Read(data, 0, data.Length);
-            //stringData = Encoding.ASCII.GetString(data, 0, recv);
-            //Console.WriteLine(stringData);
+                TcpClient tcpclnt = new TcpClient();
+                Console.WriteLine("Łączenie.....");
 
-            while (true)
-            {
-                Console.WriteLine("chyba ok");
-                input = Console.ReadLine();
-                if (input == "exit")
-                    break;
-                ns.Write(Encoding.ASCII.GetBytes(input), 0, input.Length);
-                ns.Flush();
-                data = new byte[1024];
-                recv = ns.Read(data, 0, data.Length);
-                stringData = Encoding.ASCII.GetString(data, 0, recv);
-                Console.WriteLine(stringData);
+                tcpclnt.Connect("192.168.200.107", 55555);
+
+                Console.WriteLine("Połączono");
+                Console.WriteLine("wpisz:'exit' aby przerwać połączenie, tekst by wysłać.");
+                while (true)
+                {
+                    String str = Console.ReadLine();
+                    if (str == "exit")
+                    {
+                        break;
+                    }
+                    Stream stm = tcpclnt.GetStream();
+
+                    ASCIIEncoding asen = new ASCIIEncoding();
+                    byte[] ba = asen.GetBytes(str);
+                    Console.WriteLine("Przesyłam tekst.....");
+
+                    stm.Write(ba, 0, ba.Length);
+
+                    byte[] bb = new byte[100];
+                    int k = stm.Read(bb, 0, 100);
+
+                    for (int i = 0; i < k; i++)
+                        Console.Write(Convert.ToChar(bb[i]));
+                }
+                tcpclnt.Close();
             }
-            Console.WriteLine("Disconnecting from server...");
-            ns.Close();
-            server.Close();
-            Console.ReadKey();
+
+            catch (Exception e)
+            {
+                Console.WriteLine("błąd..... " + e.StackTrace);
+            }
         }
     }
 }
