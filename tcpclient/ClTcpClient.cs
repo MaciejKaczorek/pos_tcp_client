@@ -24,14 +24,14 @@ namespace tcpclient
                 Console.ReadKey();
                 return;
             }
-
             NetworkStream ns = server.GetStream();
             int recv = ns.Read(data, 0, data.Length);
-            stringData = Encoding.ASCII.GetString(data, 0, recv);
-            Console.WriteLine(stringData);
+            //stringData = Encoding.ASCII.GetString(data, 0, recv);
+            //Console.WriteLine(stringData);
 
             while (true)
             {
+                Console.WriteLine("chyba ok");
                 input = Console.ReadLine();
                 if (input == "exit")
                     break;
